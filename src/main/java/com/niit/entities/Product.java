@@ -18,9 +18,9 @@ public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private String id;
 	private String productName;
-	private String price;
+	private int price;
 	private String quantity;
 	private String description;
 	private String category;
@@ -43,11 +43,11 @@ public class Product implements Serializable {
 		this.description = description;
 	}
 
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 
@@ -59,11 +59,11 @@ public class Product implements Serializable {
 		this.quantity = quantity;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

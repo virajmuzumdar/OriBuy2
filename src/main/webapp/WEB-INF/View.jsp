@@ -26,8 +26,8 @@
                                 <p>You must login to add the product to the cart!</p>
                                 </sec:authorize>
                                 <sec:authorize access="isAuthenticated()">
-                                <form:form action="addToCart">
-                                <button type = "button" class ="btn btn-info">Add To Cart</button>
+                                <form:form action="${pageContext.request.contextPath}/addCart?id=${product.id}&name=${username}">
+                                <button type = "submit" class ="btn btn-info">Add To Cart</button>
                                 </form:form>
                                 </sec:authorize>
                                 </div>

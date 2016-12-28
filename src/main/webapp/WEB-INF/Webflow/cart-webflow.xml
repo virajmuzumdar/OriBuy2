@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.springframework.org/schema/webflow 
+					http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+<var name="billing" class="com.niit.entities.Billing"/>
+	<var name="payment" class="com.niit.entities.Payment"/>
+	<var name="cart" class="com.niit.entities.Cart"/>
+	
+<view-state id="start" view="Webflow/Order" model="billing">
+	   <transition on="submit" to="orderConfirmation"/>
+	</view-state>
+ 
+
+<view-state id="orderConfirmation" view="Webflow/confirmOrder">
+<transition on="submit" to="payment" />
+<transition on="backToSubmitInfo" to="start" />
+</view-state>
+
+<view-state id="payment" view="Webflow/Payment" model="payment">
+<transition on="submit" to="processpayment" />
+<transition on="backToSubmitInfo" to="start" />
+</view-state>
+
+<action-state id="processpayment">
+    <evaluate expression="flowController.add(payment,billing)"></evaluate>
+	<transition on="success" to="end-suc" />
+	<transition on="failure" to="end-fail" />
+	</action-state>
+
+<end-state id="end-suc" view="Webflow/ThankYou"/>
+
+<end-state id="end-fail" view="Webflow/Cancelled"/>
+
+<global-transitions>
+<transition on="cancel" to="end-fail" />
+</global-transitions>
+
+</flow>

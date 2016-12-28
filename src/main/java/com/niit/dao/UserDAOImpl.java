@@ -79,4 +79,10 @@ public class UserDAOImpl implements UserDAO {
 		Session session = mysessionFactory.getCurrentSession();
 		return (User) session.get(User.class, id);
 	}
+	
+	@Transactional
+	public User getUserByUserName(String userName) {
+		Session session = mysessionFactory.getCurrentSession();
+		return (User) session.get(User.class, userName);
+	}
 }

@@ -85,27 +85,28 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "/viewproduct", method = RequestMethod.GET)
-	public String dekho(@RequestParam("id") int id, Model model) {
+	public String dekho(@RequestParam("id") String id, Model model) {
 		Product product = productDAOImpl.getProdById(id);
 		model.addAttribute("product", product);
 		return ("View");
 	}
 
 	@RequestMapping(value = "/editproduct", method = RequestMethod.GET)
-	public String edit(@RequestParam("id") int id, Model model) {
+	public String edit(@RequestParam("id") String id, Model model) {
 		Product product = productDAOImpl.getProdById(id);
+	
 		model.addAttribute("product", product);
 		return ("EditProduct");
 	}
 
 	@RequestMapping(value = "/editsave", method = RequestMethod.POST)
-	public ModelAndView editsave(@ModelAttribute("product") Product P,@RequestParam("id") int id) {
+	public ModelAndView editsave(@ModelAttribute("product") Product P,@RequestParam("id") String id) {
 		productDAOImpl.update(P, id);
 		return new ModelAndView("redirect:/ViewProducts");
 	}
 
 	@RequestMapping(value = "/deleteproduct", method = RequestMethod.GET)
-	public String deleteprod(@RequestParam("id") int id) {
+	public String deleteprod(@RequestParam("id") String id) {
 		productDAOImpl.delete(id);
 		return ("redirect:/ViewProducts");
 	}

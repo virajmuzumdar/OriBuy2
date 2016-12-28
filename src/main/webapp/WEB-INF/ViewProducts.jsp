@@ -51,7 +51,9 @@
 	</table>
 	</div>
 	<br />
+	<sec:authorize access="hasRole('ROLE_ADMIN')">
 	<a href="NewProd">Add New Products</a>
+	</sec:authorize>
 
 	<%@include file="footer.jsp"%>
 </body>

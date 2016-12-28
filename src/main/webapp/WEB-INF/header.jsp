@@ -21,7 +21,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
 </head>
 <body background="${pageContext.request.contextPath}/resources/images/back.jpg" />
@@ -65,6 +65,7 @@
 			</sec:authorize>
 			<sec:authorize access="isAuthenticated()">
 			<li><a href="#">Hello, ${username}!</a></li>
+			<li><a href="${pageContext.request.contextPath}/getAllCart?name=${username}">Cart</a></li>
 			<li><a href="${pageContext.request.contextPath}/Logout">Log-out</a></li>
 			</sec:authorize>
 		</ul>

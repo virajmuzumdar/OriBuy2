@@ -27,6 +27,11 @@ public class HelloController {
 		return "About";
 	}
 	
+	@RequestMapping("/Cart")
+	public String Basket() {
+		return "Cart";
+	}
+	
 	@RequestMapping("/Login")
 	public String andarAaneWalaMethod() {
 		return "Login";

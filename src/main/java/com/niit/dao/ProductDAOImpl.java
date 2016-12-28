@@ -2,11 +2,9 @@ package com.niit.dao;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -47,7 +45,7 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Transactional
-	public void update(Product P, int id) {
+	public void update(Product P, String id) {
 		System.out.println("Product ID " + P.getId());
 		Session session = mysessionFactory.getCurrentSession();
 		Product product = (Product) session.get(Product.class, id);
@@ -61,7 +59,7 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Transactional
-	public void delete(int id) {
+	public void delete(String id) {
 		Session session = mysessionFactory.getCurrentSession();
 		Product product = (Product) session.get(Product.class, id);
 		session.delete(product);
@@ -75,7 +73,7 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Transactional
-	public Product getProdById(int id) {
+	public Product getProdById(String id) {
 		Session session = mysessionFactory.getCurrentSession();
 		return (Product) session.get(Product.class, id);
 	}
